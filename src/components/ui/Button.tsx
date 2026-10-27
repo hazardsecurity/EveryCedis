@@ -5,9 +5,9 @@ type Variant = "gold" | "ink" | "outline" | "outline-light" | "ghost-light" | "r
 
 const variants: Record<Variant, string> = {
   gold: "bg-gold text-star shadow-[0_1px_0_#0e0e0c,0_6px_18px_-8px_rgba(160,120,0,0.55)] hover:bg-[#ffdb3d] focus-dark",
-  ink: "bg-star text-white hover:bg-star-2",
+  ink: "bg-ink text-paper hover:bg-ink/85 focus-dark",
   red: "bg-red text-white hover:bg-red-deep",
-  outline: "border border-star/80 text-star hover:bg-star hover:text-white focus-dark",
+  outline: "border border-ink/80 text-ink hover:bg-ink hover:text-paper focus-dark",
   "outline-light": "border border-white/40 text-white hover:border-white hover:bg-white/10",
   "ghost-light": "text-white/90 underline decoration-white/30 underline-offset-4 hover:decoration-gold",
 };

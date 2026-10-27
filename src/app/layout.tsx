@@ -4,6 +4,7 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { WhatsAppFloat } from "@/components/layout/WhatsAppFloat";
 import { site } from "@/lib/site";
+import { themeScript } from "@/lib/theme";
 import "./globals.css";
 
 const bricolage = Bricolage_Grotesque({ variable: "--font-bricolage", subsets: ["latin"], display: "swap" });
@@ -30,7 +31,10 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#ffffff",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0c110e" },
+  ],
   width: "device-width",
   initialScale: 1,
 };
@@ -66,7 +70,15 @@ const jsonLd = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en-GH" className={`${bricolage.variable} ${geist.variable} ${geistMono.variable} antialiased`}>
+    <html
+      lang="en-GH"
+      className={`${bricolage.variable} ${geist.variable} ${geistMono.variable} antialiased`}
+      suppressHydrationWarning
+    >
+      <head>
+        {/* sets data-theme before first paint, so there is no flash of the wrong theme */}
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+      </head>
       <body className="flex min-h-dvh flex-col">
         <script
           type="application/ld+json"

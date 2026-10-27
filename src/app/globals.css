@@ -1,5 +1,17 @@
 @import "tailwindcss";
 
+/* dark: follows the system unless the visitor chose light; or an explicit dark choice */
+@custom-variant dark {
+  @media (prefers-color-scheme: dark) {
+    &:where(:root:not([data-theme="light"]) *) {
+      @slot;
+    }
+  }
+  &:where([data-theme="dark"] *) {
+    @slot;
+  }
+}
+
 /*
   Every₵edi brand tokens.
   Built on the flag of Ghana: Liberty Red, Gold Coast, Forest and the Black Star.
@@ -12,20 +24,34 @@
     star on gold .......... 14.1:1   text ok (gold buttons use star text)
     gold on canopy ........ 9.6:1    text ok on dark green
 */
+/*
+  Themed tokens (paper, ink, chalk, line, mute, leaf, alert, tile, gold-soft) switch with the theme.
+  Fixed tokens (star, red, gold, forest, canopy, white) never change: they are the flag,
+  device bodies and dark feature sections.
+  Dark contrast on paper #0C110E: ink 16.6 · mute 8.2 · leaf 8.0 · alert 6.3 · gold 13.0
+*/
+@theme inline {
+  --color-paper: var(--c-paper);
+  --color-ink: var(--c-ink);
+  --color-chalk: var(--c-chalk);
+  --color-line: var(--c-line);
+  --color-mute: var(--c-mute);
+  --color-leaf: var(--c-leaf);
+  --color-alert: var(--c-alert);
+  --color-alert-deep: var(--c-alert-deep);
+  --color-tile: var(--c-tile);
+  --color-gold-soft: var(--c-gold-soft);
+}
+
 @theme {
   --color-star: #0e0e0c;
   --color-star-2: #1c1c19;
   --color-red: #ce1126;
   --color-red-deep: #9e0d1d;
   --color-gold: #fcd116;
-  --color-gold-soft: #fff3b8;
   --color-forest: #006b3f;
   --color-canopy: #00331e;
   --color-canopy-2: #0a4329;
-  --color-chalk: #f3f3ee;
-  --color-line: #dedfd6;
-  --color-mute: #5b5c55;
-  --color-mute-dark: #a9b3ab;
 
   --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-geist), ui-sans-serif, system-ui, sans-serif;
@@ -45,6 +71,67 @@
 :root {
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+/* Light theme — also the values inside .theme-light objects (receipts, screens) in dark mode */
+:root,
+.theme-light {
+  --c-paper: #ffffff;
+  --c-ink: #0e0e0c;
+  --c-chalk: #f3f3ee;
+  --c-line: #dedfd6;
+  --c-mute: #5b5c55;
+  --c-leaf: #006b3f;
+  --c-alert: #ce1126;
+  --c-alert-deep: #9e0d1d;
+  --c-tile: #f3f3ee;
+  --c-gold-soft: #fff3b8;
+  color-scheme: light;
+}
+
+/* Dark theme: system preference unless the visitor picked light; or an explicit pick */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --c-paper: #0c110e;
+    --c-ink: #eef0ea;
+    --c-chalk: #151c18;
+    --c-line: #29332d;
+    --c-mute: #a3ada6;
+    --c-leaf: #3dbe7e;
+    --c-alert: #ff5a6b;
+    --c-alert-deep: #ff8a95;
+    --c-tile: #d3d8cf;
+    --c-gold-soft: #2b2710;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --c-paper: #0c110e;
+  --c-ink: #eef0ea;
+  --c-chalk: #151c18;
+  --c-line: #29332d;
+  --c-mute: #a3ada6;
+  --c-leaf: #3dbe7e;
+  --c-alert: #ff5a6b;
+  --c-alert-deep: #ff8a95;
+  --c-tile: #d3d8cf;
+  --c-gold-soft: #2b2710;
+  color-scheme: dark;
+}
+/* objects that are physically light stay light (must come after the dark rules).
+   Also resets inherited text colour, so put text-* utilities on children, not on this element. */
+:root .theme-light {
+  color: var(--c-ink);
+  --c-paper: #ffffff;
+  --c-ink: #0e0e0c;
+  --c-chalk: #f3f3ee;
+  --c-line: #dedfd6;
+  --c-mute: #5b5c55;
+  --c-leaf: #006b3f;
+  --c-alert: #ce1126;
+  --c-alert-deep: #9e0d1d;
+  --c-tile: #f3f3ee;
+  --c-gold-soft: #fff3b8;
   color-scheme: light;
 }
 
@@ -54,8 +141,8 @@ html {
 }
 
 body {
-  background: #ffffff;
-  color: var(--color-star);
+  background: var(--c-paper);
+  color: var(--c-ink);
   font-family: var(--font-sans);
   font-size: 17px;
   line-height: 1.6;
@@ -88,7 +175,7 @@ body {
 
 .on-light :focus-visible,
 .focus-dark:focus-visible {
-  outline-color: var(--color-star);
+  outline-color: var(--c-ink);
 }
 
 /* ---------- Scroll reveals (visible without JS) ---------- */
@@ -506,4 +593,43 @@ body {
   .roll > * { transform: none !important; }
   .print-out { animation: fade-in 200ms ease both; }
   @keyframes fade-in { from { opacity: 0; } }
+}
+
+/* ---------- Theme switching ---------- */
+.theme-swap,
+.theme-swap *,
+.theme-swap *::before,
+.theme-swap *::after {
+  transition: none !important;
+}
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+/* Sun ⇄ moon: rays retract and spin away, the core grows, a bite slides in */
+.theme-toggle .tt-core,
+.theme-toggle .tt-bite,
+.theme-toggle .tt-rays {
+  transform-box: view-box;
+  transform-origin: 12px 12px;
+  transition: transform 420ms var(--ease-in-out), opacity 300ms var(--ease-out);
+}
+.theme-toggle[data-mode="dark"] .tt-core {
+  transform: scale(1.65);
+}
+.theme-toggle[data-mode="dark"] .tt-bite {
+  transform: translate(-7px, 5px);
+}
+.theme-toggle[data-mode="dark"] .tt-rays {
+  transform: rotate(-90deg) scale(0.5);
+  opacity: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle .tt-core,
+  .theme-toggle .tt-bite,
+  .theme-toggle .tt-rays {
+    transition: opacity 150ms ease;
+  }
 }

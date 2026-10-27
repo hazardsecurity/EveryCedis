@@ -92,7 +92,7 @@ export function HeroCounter() {
   return (
     <div
       ref={root}
-      className="relative overflow-hidden rounded-[28px] bg-canopy p-4 text-white shadow-[0_40px_80px_-40px_rgba(0,51,30,0.8)] sm:p-8 lg:p-10"
+      className="theme-light relative overflow-hidden rounded-[28px] bg-canopy p-4 text-white shadow-[0_40px_80px_-40px_rgba(0,51,30,0.8)] sm:p-8 lg:p-10"
       role="img"
       aria-label="Animated example: a cashier scans three items, the customer pays with MTN Mobile Money, a receipt prints, and the Kente stole's stock on the online shop drops from 4 to 3."
     >
@@ -104,8 +104,8 @@ export function HeroCounter() {
         <div className="relative">
           <div className="flex items-start gap-3">
             {/* cashier screen */}
-            <div className="min-w-0 flex-1 rounded-2xl border-[6px] border-star bg-star shadow-[0_20px_40px_-20px_#000]">
-              <div className="rounded-[10px] bg-white text-star">
+            <div className="min-w-0 flex-1 rounded-2xl border-[6px] border-ink bg-star shadow-[0_20px_40px_-20px_#000]">
+              <div className="rounded-[10px] bg-paper text-ink">
                 <div className="flex items-center justify-between border-b border-line px-3 py-2 text-[11px]">
                   <span className="font-semibold">Till 1 · Ama</span>
                   <span className="rounded-full bg-chalk px-2 py-0.5 text-mute">Cashier view</span>
@@ -148,7 +148,7 @@ export function HeroCounter() {
 
             {/* customer-facing display */}
             <div className="hidden w-[30%] shrink-0 sm:block">
-              <div className="rounded-xl border-[5px] border-star bg-star">
+              <div className="rounded-xl border-[5px] border-ink bg-star">
                 <div className="rounded-md bg-gold px-2.5 py-3 text-star">
                   <p className="text-[10px] font-semibold">Your total</p>
                   <p className="mt-1 font-display text-[1.35rem] font-bold leading-none">
@@ -171,13 +171,13 @@ export function HeroCounter() {
               </div>
               <div className="relative mx-auto h-[214px] w-[124px] overflow-hidden">
                 <div
-                  className="hero-receipt receipt-edge mx-auto w-[116px] bg-white px-2.5 pb-4 pt-2 font-mono text-[9px] leading-[22px] text-star"
+                  className="hero-receipt receipt-edge mx-auto w-[116px] bg-paper px-2.5 pb-4 pt-2 font-mono text-[9px] leading-[22px] text-ink"
                   data-tear={tearing ? "" : undefined}
                   style={{ clipPath: `inset(0 0 calc(100% - ${receiptRows * ROW + 10}px) 0)` }}
                 >
                   <p className="text-center font-bold">YOUR SHOP · OSU</p>
                   <p className="text-center">Till 1 · Ama</p>
-                  <p className="border-b border-dashed border-star/50" />
+                  <p className="border-b border-dashed border-ink/50" />
                   {items.slice(0, Math.max(shown, 0)).map((it) => (
                     <p key={it.name} className="flex justify-between gap-1">
                       <span className="truncate">{it.name.split(" ")[0]} ×{it.qty}</span>
@@ -186,7 +186,7 @@ export function HeroCounter() {
                   ))}
                   {paid ? (
                     <>
-                      <p className="flex justify-between border-t border-dashed border-star/50 font-bold">
+                      <p className="flex justify-between border-t border-dashed border-ink/50 font-bold">
                         <span>TOTAL</span>
                         <span className="tnum">{money(total)}</span>
                       </p>
@@ -234,8 +234,8 @@ export function HeroCounter() {
 
         {/* ---------- The phone ---------- */}
         <div className="relative mx-auto w-full max-w-[250px]">
-          <div className="rounded-[34px] border-[7px] border-star bg-star shadow-[0_30px_60px_-30px_#000]">
-            <div className="overflow-hidden rounded-[27px] bg-white text-star">
+          <div className="rounded-[34px] border-[7px] border-ink bg-star shadow-[0_30px_60px_-30px_#000]">
+            <div className="overflow-hidden rounded-[27px] bg-paper text-ink">
               <div className="flex items-center justify-between px-4 pb-2 pt-3 text-[10px] font-semibold">
                 <span className="tnum">9:41</span>
                 <span className="mx-auto h-4 w-14 rounded-full bg-star" />
@@ -254,7 +254,7 @@ export function HeroCounter() {
                   <span className="tnum font-display text-base font-bold">GH₵ 240.00</span>
                   <span
                     className={`inline-flex items-center gap-1 rounded-full px-2 py-1 text-[11px] font-semibold transition-colors duration-300 ${
-                      stock === 0 ? "bg-red text-white" : synced ? "bg-gold text-star" : "bg-chalk text-star"
+                      stock === 0 ? "bg-red text-white" : synced ? "bg-gold text-star" : "bg-chalk text-ink"
                     }`}
                   >
                     {stock === 0 ? (
@@ -272,7 +272,7 @@ export function HeroCounter() {
               </div>
             </div>
           </div>
-          <div className="hero-toast absolute -top-3 left-1/2 w-max -translate-x-1/2 rounded-full bg-white px-3 py-1.5 text-[11px] font-semibold text-star shadow-lg" data-show={synced && !tearing ? "" : undefined}>
+          <div className="hero-toast absolute -top-3 left-1/2 w-max -translate-x-1/2 rounded-full bg-paper px-3 py-1.5 text-[11px] font-semibold text-ink shadow-lg" data-show={synced && !tearing ? "" : undefined}>
             <span className="mr-1 inline-block h-2 w-2 rounded-full bg-forest" /> Sold in shop · website updated
           </div>
           <div className="hero-toast absolute -top-3 left-1/2 w-max -translate-x-1/2 rounded-full bg-gold px-3 py-1.5 text-[11px] font-semibold text-star shadow-lg" data-show={restocked ? "" : undefined}>

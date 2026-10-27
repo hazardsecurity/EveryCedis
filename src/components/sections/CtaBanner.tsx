@@ -11,8 +11,8 @@ export function CtaBanner({
   lead?: string;
 }) {
   return (
-    <section aria-labelledby="cta-title" className="bg-white px-4 pb-20 sm:px-6 md:pb-28 lg:px-8">
-      <Reveal className="relative mx-auto max-w-[1240px] overflow-hidden rounded-[28px] bg-star text-white">
+    <section aria-labelledby="cta-title" className="bg-paper px-4 pb-20 sm:px-6 md:pb-28 lg:px-8">
+      <Reveal className="relative mx-auto max-w-[1240px] overflow-hidden rounded-[28px] bg-star text-white dark:ring-1 dark:ring-white/12">
         <Weave className="h-2.5" />
         <div className="grid gap-10 px-6 py-14 sm:px-10 md:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] md:items-end md:py-20 lg:px-16">
           <div>

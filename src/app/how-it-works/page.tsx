@@ -44,7 +44,7 @@ export default function Page() {
                 <p className="mt-3 text-lg text-mute">{s.d}</p>
               </div>
               <div className="rounded-2xl bg-chalk p-5">
-                <p className="text-sm font-semibold text-forest">What you do</p>
+                <p className="text-sm font-semibold text-leaf">What you do</p>
                 <p className="mt-1.5 font-medium">{s.you}</p>
               </div>
             </Reveal>

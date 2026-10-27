@@ -97,7 +97,7 @@ export function RoleSpotlight() {
 
       <div id="role-panel" role="tabpanel" aria-labelledby={`tab-${role}`} className="mt-8 grid gap-6 lg:grid-cols-[minmax(0,1.25fr)_minmax(0,1fr)]">
         {/* Price list everyone shares; tape hides what the cashier shouldn't see */}
-        <div className="overflow-hidden rounded-2xl bg-white text-star">
+        <div className="theme-light overflow-hidden rounded-2xl bg-paper text-ink">
           <div className="flex items-center justify-between border-b border-line px-5 py-4">
             <p className="font-semibold">Price list · Osu branch</p>
             <p className="text-sm text-mute">{owner ? "Full visibility" : "Selling prices only"}</p>
@@ -122,7 +122,7 @@ export function RoleSpotlight() {
                       <span className="tape" data-on={owner ? undefined : ""} style={{ transitionDelay: `${i * 60}ms` }} />
                       {!owner ? <span className="sr-only">Hidden for cashier</span> : null}
                     </td>
-                    <td className="relative px-5 py-3.5 text-right text-forest">
+                    <td className="relative px-5 py-3.5 text-right text-leaf">
                       <span className={owner ? "" : "invisible"}>{r.margin}</span>
                       <span className="tape" data-on={owner ? undefined : ""} style={{ transitionDelay: `${i * 60 + 40}ms` }} />
                     </td>
@@ -143,13 +143,13 @@ export function RoleSpotlight() {
               <li className="flex gap-3"><Cross /> Change stock counts or delete a sale</li>
             </ul>
           </div>
-          <div className="role-card rounded-2xl bg-white p-6 text-star" data-on={owner ? "" : undefined} aria-hidden={!owner}>
-            <p className="flex items-center gap-2 text-sm font-semibold text-forest"><Star className="h-3.5 w-3.5" /> Today, all tills</p>
+          <div className="theme-light role-card rounded-2xl bg-paper p-6 text-ink" data-on={owner ? "" : undefined} aria-hidden={!owner}>
+            <p className="flex items-center gap-2 text-sm font-semibold text-leaf"><Star className="h-3.5 w-3.5" /> Today, all tills</p>
             <dl className="mt-4 grid grid-cols-2 gap-4">
               <div><dt className="text-sm text-mute">Net margin</dt><dd className="tnum font-display text-3xl font-bold">38.6%</dd></div>
               <div><dt className="text-sm text-mute">Shift 2 shortage</dt><dd className="tnum font-display text-3xl font-bold">GH₵ 0</dd></div>
               <div><dt className="text-sm text-mute">Stock value</dt><dd className="tnum font-display text-xl font-bold">GH₵ 48,210</dd></div>
-              <div><dt className="text-sm text-mute">Low stock</dt><dd className="font-display text-xl font-bold text-red">3 items</dd></div>
+              <div><dt className="text-sm text-mute">Low stock</dt><dd className="font-display text-xl font-bold text-alert">3 items</dd></div>
             </dl>
             <p className="mt-5 text-sm text-mute">Example figures. The owner sees this on their phone, wherever they are.</p>
           </div>
@@ -168,7 +168,7 @@ function Tick() {
 }
 function Cross() {
   return (
-    <svg viewBox="0 0 20 20" className="mt-1 h-4 w-4 shrink-0 text-red" aria-label="Not allowed">
+    <svg viewBox="0 0 20 20" className="mt-1 h-4 w-4 shrink-0 text-alert" aria-label="Not allowed">
       <path d="M5 5l10 10M15 5L5 15" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />
     </svg>
   );

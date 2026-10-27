@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { Logo } from "@/components/brand/Logo";
 import { ButtonLink } from "@/components/ui/Button";
+import { ThemeToggle } from "@/components/layout/ThemeToggle";
 import { nav, solutions } from "@/lib/site";
 
 const dot: Record<string, string> = { red: "bg-red", gold: "bg-gold", green: "bg-forest" };
@@ -62,7 +63,7 @@ export function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-50 border-b bg-white/90 backdrop-blur-md transition-[border-color,box-shadow] duration-200 ${
+      className={`sticky top-0 z-50 border-b bg-paper/90 backdrop-blur-md transition-[border-color,box-shadow] duration-200 ${
         scrolled ? "border-line shadow-[0_8px_24px_-18px_rgba(14,14,12,0.35)]" : "border-transparent"
       }`}
     >
@@ -82,7 +83,7 @@ export function Header() {
               aria-controls="solutions-menu"
               onClick={() => setSolOpen((o) => !o)}
               className={`press focus-dark inline-flex h-10 items-center gap-1.5 rounded-full px-3.5 text-[0.95rem] font-medium hover:bg-chalk ${
-                isSolution ? "text-star" : "text-star/75"
+                isSolution ? "text-ink" : "text-ink/75"
               }`}
             >
               Solutions
@@ -94,7 +95,7 @@ export function Header() {
               id="solutions-menu"
               data-open={solOpen ? "" : undefined}
               inert={!solOpen}
-              className="pop absolute left-0 top-[calc(100%+8px)] w-[360px] origin-top-left rounded-2xl border border-line bg-white p-2 shadow-[0_24px_48px_-24px_rgba(14,14,12,0.35)]"
+              className="pop absolute left-0 top-[calc(100%+8px)] w-[360px] origin-top-left rounded-2xl border border-line bg-paper p-2 shadow-[0_24px_48px_-24px_rgba(14,14,12,0.35)]"
             >
               {solutions.map((s) => (
                 <Link
@@ -119,7 +120,7 @@ export function Header() {
                 href={n.href}
                 aria-current={active ? "page" : undefined}
                 className={`press focus-dark inline-flex h-10 items-center whitespace-nowrap rounded-full px-3 text-[0.95rem] font-medium hover:bg-chalk xl:px-3.5 ${
-                  active ? "text-star" : "text-star/75"
+                  active ? "text-ink" : "text-ink/75"
                 }`}
               >
                 {n.label}
@@ -129,7 +130,8 @@ export function Header() {
         </nav>
 
         <div className="ml-auto flex items-center gap-2">
-          <span className="hidden sm:block">
+          <ThemeToggle />
+          <span className="hidden sm:block lg:hidden xl:block">
             <ButtonLink href="/contact" variant="gold" className="min-h-11">
               Book a free demo
             </ButtonLink>
@@ -143,9 +145,9 @@ export function Header() {
             onClick={() => setMenuOpen((o) => !o)}
           >
             <span className="relative block h-3.5 w-5" aria-hidden="true">
-              <span className={`absolute left-0 top-0 h-0.5 w-5 rounded bg-star transition-transform duration-200 ${menuOpen ? "translate-y-[6px] rotate-45" : ""}`} />
-              <span className={`absolute left-0 top-[6px] h-0.5 w-5 rounded bg-star transition-opacity duration-150 ${menuOpen ? "opacity-0" : ""}`} />
-              <span className={`absolute left-0 top-3 h-0.5 w-5 rounded bg-star transition-transform duration-200 ${menuOpen ? "-translate-y-[6px] -rotate-45" : ""}`} />
+              <span className={`absolute left-0 top-0 h-0.5 w-5 rounded bg-ink transition-transform duration-200 ${menuOpen ? "translate-y-[6px] rotate-45" : ""}`} />
+              <span className={`absolute left-0 top-[6px] h-0.5 w-5 rounded bg-ink transition-opacity duration-150 ${menuOpen ? "opacity-0" : ""}`} />
+              <span className={`absolute left-0 top-3 h-0.5 w-5 rounded bg-ink transition-transform duration-200 ${menuOpen ? "-translate-y-[6px] -rotate-45" : ""}`} />
             </span>
           </button>
         </div>
@@ -155,7 +157,7 @@ export function Header() {
         id="mobile-menu"
         data-open={menuOpen ? "" : undefined}
         inert={!menuOpen}
-        className="sheet fixed inset-x-0 top-[68px] bottom-0 overflow-y-auto border-t border-line bg-white px-4 pb-10 pt-4 lg:hidden"
+        className="sheet fixed inset-x-0 top-[68px] bottom-0 overflow-y-auto border-t border-line bg-paper px-4 pb-10 pt-4 lg:hidden"
       >
         <p className="px-2 pb-2 text-sm font-semibold text-mute">Solutions</p>
         {solutions.map((s) => (

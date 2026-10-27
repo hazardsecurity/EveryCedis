@@ -43,7 +43,7 @@ export default function Page() {
         <Heading id="scope-title" title="What we look after, every month" />
         <Reveal stagger className="mt-12 grid gap-x-10 gap-y-10 md:grid-cols-2">
           {scope.map(([t, d]) => (
-            <div key={t} className="border-t-2 border-star pt-5">
+            <div key={t} className="border-t-2 border-ink pt-5">
               <h3 className="font-display text-2xl font-bold leading-tight">{t}</h3>
               <p className="mt-3 text-mute">{d}</p>
             </div>
@@ -60,7 +60,7 @@ export default function Page() {
             title="Thirty days, one page, plain cedis."
             lead="Every month the owner receives a consolidated audit of the business. No logins, no spreadsheets to decode."
           />
-          <Reveal className="rounded-[24px] bg-white p-6 text-star sm:p-8">
+          <Reveal className="theme-light rounded-[24px] bg-paper p-6 text-ink sm:p-8">
             <div className="flex items-center justify-between border-b border-line pb-4">
               <p className="font-display text-xl font-bold">Monthly audit</p>
               <span className="inline-flex items-center gap-1.5 rounded-full bg-gold px-3 py-1 text-sm font-semibold"><Star className="h-3 w-3" /> Audited</span>
@@ -77,7 +77,7 @@ export default function Page() {
         </div>
       </Section>
 
-      <div className="h-20 bg-white md:h-28" />
+      <div className="h-20 bg-paper md:h-28" />
       <CtaBanner title="Stop guessing how the month went." />
     </>
   );

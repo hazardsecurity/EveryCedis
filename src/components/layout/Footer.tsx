@@ -5,7 +5,7 @@ import { nav, site, solutions, whatsappLink } from "@/lib/site";
 
 export function Footer() {
   return (
-    <footer className="bg-star text-white">
+    <footer className="bg-star text-white dark:border-t dark:border-white/10">
       <Weave className="h-3" />
       <div className="mx-auto grid max-w-[1240px] gap-12 px-4 py-16 sm:px-6 md:grid-cols-[minmax(0,1.3fr)_repeat(3,minmax(0,1fr))] lg:px-8">
         <div>

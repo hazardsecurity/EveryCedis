@@ -47,7 +47,7 @@ export default function Home() {
   return (
     <>
       {/* ---------- Hero ---------- */}
-      <section className="relative overflow-hidden bg-white">
+      <section className="relative overflow-hidden bg-paper">
         <div className="mx-auto max-w-[1240px] px-4 pt-12 sm:px-6 md:pt-20 lg:px-8">
           <Reveal immediate stagger className="grid gap-8 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)] lg:items-end">
             <h1 className="font-display text-[2.75rem] font-bold leading-[0.98] tracking-[-0.035em] text-balance sm:text-[4.2rem] lg:text-[5.1rem]">
@@ -57,7 +57,7 @@ export default function Home() {
               <p className="text-lg text-mute text-pretty sm:text-xl">
                 We equip growing Ghanaian businesses with modern touchscreen POS machines, heavy-duty UPS battery backups, automated stock tracking and synchronised e-commerce websites.
               </p>
-              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <ButtonLink href="/contact">Book a free onsite demo</ButtonLink>
                 <ButtonLink href="/pricing" variant="outline">Calculate your setup cost</ButtonLink>
               </div>
@@ -103,10 +103,10 @@ export default function Home() {
             <Link
               key={p.href}
               href={p.href}
-              className="press focus-dark group flex flex-col overflow-hidden rounded-[22px] border border-line bg-white hover:border-star"
+              className="press focus-dark group flex flex-col overflow-hidden rounded-[22px] border border-line bg-paper hover:border-ink"
             >
               <span className={`h-2 ${p.bar}`} />
-              <div className="flex aspect-[6/4] items-center justify-center bg-chalk px-8">
+              <div className="flex aspect-[6/4] items-center justify-center bg-tile px-8">
                 <Art className="h-full w-full max-w-[240px] transition-transform duration-300 ease-[var(--ease-out)] [@media(hover:hover)]:group-hover:-translate-y-1" />
               </div>
               <div className="flex flex-1 flex-col p-6">
@@ -151,7 +151,7 @@ export default function Home() {
             />
             <Reveal stagger className="mt-10 grid gap-x-8 gap-y-8 sm:grid-cols-2">
               {problems.map((p) => (
-                <div key={p.tag} className="border-t-2 border-star pt-4">
+                <div key={p.tag} className="border-t-2 border-ink pt-4">
                   <h3 className="font-display text-xl font-bold">{p.tag}</h3>
                   <p className="mt-2 text-mute">{p.text}</p>
                 </div>
@@ -173,8 +173,8 @@ export default function Home() {
                 <span key={i} style={{ background: c }} />
               ))}
             </div>
-            <div className="absolute inset-6 flex flex-col justify-end rounded-2xl bg-white p-6 sm:inset-10">
-              <p className="text-sm font-semibold text-forest">Live setup · East Legon, Accra</p>
+            <div className="absolute inset-6 flex flex-col justify-end rounded-2xl bg-paper p-6 sm:inset-10">
+              <p className="text-sm font-semibold text-leaf">Live setup · East Legon, Accra</p>
               <p className="mt-2 font-display text-5xl font-bold tracking-[-0.03em]">Ìfẹ́mi</p>
               <p className="mt-3 text-mute">Shop photography to come — we&apos;ll add real pictures of the counter and storefront here.</p>
             </div>
@@ -193,7 +193,7 @@ export default function Home() {
         </div>
       </Section>
 
-      <div className="h-20 bg-white md:h-28" />
+      <div className="h-20 bg-paper md:h-28" />
       <CtaBanner />
     </>
   );
@@ -208,20 +208,20 @@ function ShiftReceipt() {
   ];
   return (
     <figure className="rotate-[1.2deg]">
-      <div className="receipt-edge bg-white px-6 pb-10 pt-7 font-mono text-[13px] leading-7 shadow-[0_30px_50px_-30px_rgba(14,14,12,0.45)] ring-1 ring-line">
+      <div className="theme-light receipt-edge bg-paper px-6 pb-10 pt-7 font-mono text-[13px] leading-7 shadow-[0_30px_50px_-30px_rgba(14,14,12,0.45)] ring-1 ring-line">
         <p className="text-center font-bold">SHIFT CLOSE · TILL 2</p>
         <p className="text-center text-mute">Sat 14:00 – 21:00 · Example</p>
-        <p className="my-2 border-b border-dashed border-star/40" />
+        <p className="my-2 border-b border-dashed border-ink/40" />
         {lines.map(([k, v]) => (
           <p key={k} className="flex justify-between"><span>{k}</span><span className="tnum">{v}</span></p>
         ))}
-        <p className="mt-1 flex justify-between border-t border-dashed border-star/40 pt-1 font-bold">
+        <p className="mt-1 flex justify-between border-t border-dashed border-ink/40 pt-1 font-bold">
           <span>Shortage</span><span className="tnum">0.00</span>
         </p>
-        <p className="my-2 border-b border-dashed border-star/40" />
+        <p className="my-2 border-b border-dashed border-ink/40" />
         <p className="flex justify-between"><span>MoMo (settled)</span><span className="tnum">2,140.00</span></p>
         <p className="flex justify-between"><span>Card</span><span className="tnum">860.00</span></p>
-        <p className="flex justify-between text-red"><span>Stock check: Shea 250g</span><span className="tnum">−1</span></p>
+        <p className="flex justify-between text-alert"><span>Stock check: Shea 250g</span><span className="tnum">−1</span></p>
         <p className="mt-4 flex items-center justify-center gap-2 rounded-md bg-gold py-1.5 font-bold text-star">
           <Star className="h-3.5 w-3.5" /> Supervisor signed off
         </p>

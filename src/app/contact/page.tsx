@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <section className="bg-white">
+    <section className="bg-paper">
       <div className="mx-auto grid max-w-[1240px] gap-14 px-4 pb-24 pt-14 sm:px-6 md:pt-20 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:px-8">
         <div>
           <Reveal immediate stagger>
@@ -25,7 +25,7 @@ export default function Page() {
         </div>
 
         <aside className="space-y-5 lg:pt-28">
-          <div className="rounded-[24px] bg-star p-7 text-white">
+          <div className="rounded-[24px] bg-star p-7 text-white dark:ring-1 dark:ring-white/12">
             <h2 className="font-display text-2xl font-bold">Talk to a technician</h2>
             <dl className="mt-6 space-y-4">
               <div><dt className="text-sm text-white/60">Phone</dt><dd><a href={site.phoneHref} className="tnum text-lg font-semibold hover:text-gold">{site.phoneDisplay}</a></dd></div>
@@ -40,7 +40,7 @@ export default function Page() {
             <iframe
               title="Map of Accra, Ghana"
               src="https://maps.google.com/maps?q=Accra%2C%20Ghana&z=12&output=embed"
-              className="block aspect-[4/3] w-full grayscale-[0.3]"
+              className="block aspect-[4/3] w-full grayscale-[0.3] dark:[filter:invert(0.9)_hue-rotate(180deg)_grayscale(0.3)]"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             />

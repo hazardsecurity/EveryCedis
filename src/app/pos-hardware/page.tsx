@@ -52,8 +52,8 @@ export default function Page() {
         <Heading id="kit-title" title="What comes in the kit" lead="Delivered, installed and tested at your counter. One number to call if anything goes wrong." />
         <Reveal stagger className="mt-12 grid gap-px overflow-hidden rounded-[22px] border border-line bg-line sm:grid-cols-2 lg:grid-cols-5">
           {kit.map(({ Art, name, text }) => (
-            <div key={name} className="flex flex-col bg-white p-6">
-              <Art className="mx-auto h-28 w-full max-w-[160px]" />
+            <div key={name} className="flex flex-col bg-paper p-6">
+              <div className="rounded-xl bg-tile p-3"><Art className="mx-auto h-28 w-full max-w-[160px]" /></div>
               <h3 className="mt-5 font-display text-lg font-bold leading-snug">{name}</h3>
               <p className="mt-2 text-[0.95rem] text-mute">{text}</p>
             </div>
@@ -75,7 +75,7 @@ export default function Page() {
               ["Barcode labels", "Print your own labels for local goods and loose items."],
               ["Margin on every sale", "Owners see profit per item, per day and per staff member."],
             ].map(([t, d]) => (
-              <div key={t} className="rounded-2xl bg-white p-6">
+              <div key={t} className="rounded-2xl bg-paper p-6">
                 <h3 className="font-display text-lg font-bold">{t}</h3>
                 <p className="mt-2 text-mute">{d}</p>
               </div>
@@ -88,15 +88,15 @@ export default function Page() {
         <Heading id="roles-title" title="Each person sees only what their job needs." lead="Permissions are set per staff login. The cashier's screen never shows what you paid your supplier." />
         <Reveal stagger className="mt-12 grid gap-5 md:grid-cols-3">
           {roles.map((r, i) => (
-            <div key={r.role} className={`rounded-[22px] p-6 ${i === 2 ? "bg-star text-white" : "border border-line"}`}>
+            <div key={r.role} className={`rounded-[22px] p-6 ${i === 2 ? "bg-star text-white dark:ring-1 dark:ring-white/12" : "border border-line"}`}>
               <h3 className="font-display text-xl font-bold">{r.role}</h3>
               <ul className="mt-5 space-y-2.5">
                 {r.can.map((c) => (
-                  <li key={c} className="flex gap-2.5"><Star className={`mt-1.5 h-3 w-3 shrink-0 ${i === 2 ? "text-gold" : "text-forest"}`} />{c}</li>
+                  <li key={c} className="flex gap-2.5"><Star className={`mt-1.5 h-3 w-3 shrink-0 ${i === 2 ? "text-gold" : "text-leaf"}`} />{c}</li>
                 ))}
                 {r.cannot.map((c) => (
                   <li key={c} className={`flex gap-2.5 ${i === 2 ? "text-white/60" : "text-mute"}`}>
-                    <span aria-hidden="true" className="mt-0.5 font-bold text-red">×</span><span><span className="sr-only">Cannot: </span>{c}</span>
+                    <span aria-hidden="true" className="mt-0.5 font-bold text-alert">×</span><span><span className="sr-only">Cannot: </span>{c}</span>
                   </li>
                 ))}
               </ul>
@@ -121,7 +121,7 @@ export default function Page() {
         </p>
       </Section>
 
-      <div className="h-20 bg-white md:h-28" />
+      <div className="h-20 bg-paper md:h-28" />
       <CtaBanner />
     </>
   );

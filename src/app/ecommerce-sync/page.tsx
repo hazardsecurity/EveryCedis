@@ -15,9 +15,9 @@ export const metadata: Metadata = {
 const pay = [
   { n: "MTN MoMo", c: "bg-gold text-star" },
   { n: "Telecel Cash", c: "bg-red text-white" },
-  { n: "AT Money", c: "bg-star text-white" },
-  { n: "Visa", c: "bg-white text-star border border-line" },
-  { n: "Mastercard", c: "bg-white text-star border border-line" },
+  { n: "AT Money", c: "bg-star text-white dark:ring-1 dark:ring-white/20" },
+  { n: "Visa", c: "bg-paper text-ink border border-line" },
+  { n: "Mastercard", c: "bg-paper text-ink border border-line" },
 ];
 
 export default function Page() {
@@ -48,7 +48,7 @@ export default function Page() {
               ))}
             </Reveal>
           </div>
-          <Reveal className="rounded-[24px] bg-white p-6 sm:p-8">
+          <Reveal className="rounded-[24px] bg-paper p-6 sm:p-8">
             <p className="font-semibold">Delivery fee, worked out at checkout</p>
             <table className="mt-4 w-full text-left">
               <caption className="sr-only">Example delivery zones</caption>
@@ -67,14 +67,14 @@ export default function Page() {
       <Section labelledBy="alert-title">
         <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.8fr)] lg:items-center">
           <Heading id="alert-title" title="Every order, straight to WhatsApp." lead="When a buyer checks out, the shop, the dispatcher and the buyer each get a WhatsApp message, SMS and email — so nobody has to keep refreshing a dashboard." />
-          <Reveal stagger className="mx-auto w-full max-w-sm space-y-3 rounded-[28px] bg-[#e7e2d8] p-4">
+          <Reveal stagger className="theme-light mx-auto w-full max-w-sm space-y-3 rounded-[28px] bg-[#e7e2d8] p-4 text-ink">
             <div className="ml-auto max-w-[85%] rounded-2xl rounded-tr-sm bg-[#d9fdd3] p-3 text-[0.95rem] shadow-sm">
               <p className="font-semibold">New order #1042</p>
               <p>1 × Ankara wrap dress, size 12</p>
               <p className="tnum">GH₵ 380.00 · paid by MoMo</p>
               <p className="text-sm text-mute">Deliver to: East Legon</p>
             </div>
-            <div className="max-w-[85%] rounded-2xl rounded-tl-sm bg-white p-3 text-[0.95rem] shadow-sm">
+            <div className="max-w-[85%] rounded-2xl rounded-tl-sm bg-paper p-3 text-[0.95rem] shadow-sm">
               <p>Dispatcher assigned. Rider leaves 2:30pm.</p>
             </div>
             <div className="ml-auto max-w-[85%] rounded-2xl rounded-tr-sm bg-[#d9fdd3] p-3 text-[0.95rem] shadow-sm">

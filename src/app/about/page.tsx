@@ -39,7 +39,7 @@ export default function Page() {
           ))}
         </Reveal>
       </Section>
-      <section aria-label="Brand colours" className="bg-white">
+      <section aria-label="Brand colours" className="bg-paper">
         <div className="mx-auto max-w-[1240px] px-4 sm:px-6 lg:px-8">
           <Weave className="h-6 rounded-full" />
           <p className="mt-4 pb-20 text-sm text-mute md:pb-28">

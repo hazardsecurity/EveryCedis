@@ -21,7 +21,7 @@ type LogoProps = { className?: string; markClassName?: string; tone?: "ink" | "l
 
 /** Wordmark: "Every₵edi" — the ₵ is always the mark, never a typed letter. */
 export function Logo({ className = "", markClassName = "h-[0.84em] w-[0.66em]", tone = "ink" }: LogoProps) {
-  const ink = tone === "ink" ? "text-star" : "text-white";
+  const ink = tone === "ink" ? "text-ink" : "text-white";
   return (
     <span className={`inline-flex items-center gap-2 font-display text-[1.35rem] font-bold leading-none tracking-[-0.02em] ${ink} ${className}`}>
       <span aria-hidden="true" className="whitespace-nowrap">

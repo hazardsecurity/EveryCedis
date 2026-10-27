@@ -17,9 +17,9 @@ export function PageHero({
   children?: ReactNode;
 }) {
   return (
-    <section className="border-b border-line bg-white">
+    <section className="border-b border-line bg-paper">
       <Reveal immediate stagger className="mx-auto max-w-[1240px] px-4 pb-16 pt-14 sm:px-6 md:pb-20 md:pt-20 lg:px-8">
-        <p className="inline-flex items-center gap-2.5 text-sm font-semibold text-star">
+        <p className="inline-flex items-center gap-2.5 text-sm font-semibold text-ink">
           <span className={`h-3 w-3 rounded-[3px] ${bars[colour]}`} />
           {kicker}
         </p>

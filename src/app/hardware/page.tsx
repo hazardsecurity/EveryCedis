@@ -44,8 +44,8 @@ export default function Page() {
         <Heading id="pieces-title" title="The five pieces on your counter" />
         <div className="mt-12 space-y-5">
           {pieces.map(({ Art, ...p }, i) => (
-            <Reveal key={p.name} className={`grid items-center gap-6 overflow-hidden rounded-[24px] bg-white md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] ${i % 2 ? "md:[&>*:first-child]:order-2" : ""}`}>
-              <div className="relative flex aspect-[4/3] items-center justify-center bg-chalk p-10 md:aspect-auto md:h-full md:min-h-[280px]">
+            <Reveal key={p.name} className={`grid items-center gap-6 overflow-hidden rounded-[24px] bg-paper md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] ${i % 2 ? "md:[&>*:first-child]:order-2" : ""}`}>
+              <div className="relative flex aspect-[4/3] items-center justify-center bg-tile p-10 md:aspect-auto md:h-full md:min-h-[280px]">
                 <span className={`absolute left-0 top-0 h-full w-2 ${p.bar}`} />
                 <Art className="h-full max-h-[220px] w-full" />
               </div>
@@ -66,7 +66,7 @@ export default function Page() {
         <p className="mt-8 text-sm text-mute">Exact models and brands are confirmed in your written quote, based on stock available in Accra.</p>
       </Section>
 
-      <div className="h-20 bg-white md:h-28" />
+      <div className="h-20 bg-paper md:h-28" />
       <CtaBanner title="See the kit working in your own shop." />
     </>
   );

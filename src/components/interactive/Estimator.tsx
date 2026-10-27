@@ -59,7 +59,7 @@ export function Estimator() {
       </form>
 
       <aside id="estimate" className="scroll-mt-24 lg:sticky lg:top-24" aria-live="polite" aria-atomic="true">
-        <div className="overflow-hidden rounded-[24px] bg-star text-white">
+        <div className="overflow-hidden rounded-[24px] bg-star text-white dark:ring-1 dark:ring-white/12">
           <div className="h-2 bg-gold" />
           <div className="p-6 sm:p-8">
             <p className="text-sm text-white/60">Your estimate</p>
@@ -108,7 +108,7 @@ function Step({ n, legend, children }: { n: number; legend: string; children: Re
   return (
     <fieldset>
       <legend className="flex items-center gap-3 font-display text-xl font-bold">
-        <span className="tnum inline-flex h-8 w-8 items-center justify-center rounded-full bg-star text-sm text-white">{n}</span>
+        <span className="tnum inline-flex h-8 w-8 items-center justify-center rounded-full bg-ink text-sm text-paper">{n}</span>
         {legend}
       </legend>
       <div className="mt-4">{children}</div>
@@ -119,13 +119,13 @@ function Step({ n, legend, children }: { n: number; legend: string; children: Re
 function Option({ name, checked, onChange, title, note }: { name: string; checked: boolean; onChange: () => void; title: string; note?: string }) {
   return (
     <label
-      className={`press relative flex min-h-14 cursor-pointer flex-col justify-center rounded-2xl border-2 px-4 py-3 has-[:focus-visible]:outline has-[:focus-visible]:outline-3 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-star ${
-        checked ? "border-star bg-gold-soft" : "border-line bg-white hover:border-star/40"
+      className={`press relative flex min-h-14 cursor-pointer flex-col justify-center rounded-2xl border-2 px-4 py-3 has-[:focus-visible]:outline has-[:focus-visible]:outline-3 has-[:focus-visible]:outline-offset-2 has-[:focus-visible]:outline-ink ${
+        checked ? "border-ink bg-gold-soft" : "border-line bg-paper hover:border-ink/40"
       }`}
     >
       <input type="radio" name={name} checked={checked} onChange={onChange} className="sr-only" />
       <span className="pr-6 font-semibold">{title}</span>
-      <span aria-hidden="true" className={`absolute right-4 top-4 h-4 w-4 rounded-full border-2 transition-[background-color,border-color,box-shadow] duration-150 ${checked ? "border-star bg-star shadow-[inset_0_0_0_3px_#fff3b8]" : "border-line"}`} />
+      <span aria-hidden="true" className={`absolute right-4 top-4 h-4 w-4 rounded-full border-2 transition-[background-color,border-color,box-shadow] duration-150 ${checked ? "border-ink bg-ink shadow-[inset_0_0_0_3px_var(--c-gold-soft)]" : "border-line"}`} />
       {note ? <span className="mt-0.5 text-sm text-mute">{note}</span> : null}
     </label>
   );

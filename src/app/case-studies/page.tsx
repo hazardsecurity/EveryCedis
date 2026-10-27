@@ -42,7 +42,7 @@ export default function Page() {
             </Reveal>
           </div>
           <Reveal className="rounded-[24px] border-2 border-dashed border-line p-8">
-            <p className="inline-flex items-center gap-2 text-sm font-semibold text-forest"><Star className="h-3.5 w-3.5" /> Coming soon</p>
+            <p className="inline-flex items-center gap-2 text-sm font-semibold text-leaf"><Star className="h-3.5 w-3.5" /> Coming soon</p>
             <h3 className="mt-3 font-display text-2xl font-bold">Results and a word from the owner</h3>
             <p className="mt-3 text-mute">
               We&apos;re gathering Ìfẹ́mi&apos;s before-and-after figures (shortages, stock accuracy, online orders) and a quote from the owner. We publish only numbers the shop has approved.

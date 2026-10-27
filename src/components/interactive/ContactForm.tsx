@@ -92,17 +92,17 @@ export function ContactForm() {
   if (state === "printing" || state === "done") {
     return (
       <div className="relative">
-        <div className="h-3 rounded-full bg-star" aria-hidden="true" />
+        <div className="h-3 rounded-full bg-star dark:ring-1 dark:ring-white/15" aria-hidden="true" />
         <div className="relative -mt-1.5 overflow-hidden px-4">
-          <div className="print-out receipt-edge mx-auto max-w-md bg-white px-6 pb-10 pt-6 font-mono text-[14px] leading-7 shadow-[0_30px_50px_-30px_rgba(14,14,12,0.45)] ring-1 ring-line" data-state={state}>
+          <div className="theme-light print-out receipt-edge mx-auto max-w-md bg-paper px-6 pb-10 pt-6 font-mono text-[14px] leading-7 shadow-[0_30px_50px_-30px_rgba(14,14,12,0.45)] ring-1 ring-line" data-state={state}>
             <p className="text-center font-bold">DEMO REQUEST RECEIVED</p>
             <p className="tnum text-center text-mute">Ref {ref}</p>
-            <p className="my-2 border-b border-dashed border-star/40" />
+            <p className="my-2 border-b border-dashed border-ink/40" />
             <p className="flex justify-between gap-4"><span>Name</span><span className="truncate">{data?.name}</span></p>
             <p className="flex justify-between gap-4"><span>Business</span><span className="truncate">{data?.business}</span></p>
             <p className="flex justify-between gap-4"><span>Location</span><span className="truncate">{data?.location}</span></p>
             <p className="flex justify-between gap-4"><span>Store</span><span className="truncate">{data?.storeType}</span></p>
-            <p className="my-2 border-b border-dashed border-star/40" />
+            <p className="my-2 border-b border-dashed border-ink/40" />
             <p>A technician will call or WhatsApp you on <span className="tnum">{data?.phone}</span> within one working day.</p>
             <p className="mt-4 flex items-center justify-center gap-2 rounded-md bg-gold py-1.5 font-bold text-star">
               <Star className="h-3.5 w-3.5" /> Medaase — thank you
@@ -116,7 +116,7 @@ export function ContactForm() {
 
   const sending = state === "sending";
   const field = (k: string) =>
-    `mt-2 block w-full rounded-xl border-2 bg-white px-4 py-3 text-[16px] outline-none transition-[border-color,box-shadow] duration-150 focus:border-star focus:shadow-[0_0_0_4px_rgba(252,209,22,0.55)] ${
+    `mt-2 block w-full rounded-xl border-2 bg-paper px-4 py-3 text-[16px] outline-none transition-[border-color,box-shadow] duration-150 focus:border-ink focus:shadow-[0_0_0_4px_rgba(252,209,22,0.55)] ${
       bad.includes(k) ? "border-red" : "border-line"
     }`;
 
@@ -142,7 +142,7 @@ export function ContactForm() {
       </div>
       <label className="block font-semibold">
         {labels.storeType}
-        <select name="storeType" defaultValue="" className={`${field("storeType")} appearance-none bg-[url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 12 12%22><path d=%22M2 4.5l4 3.5 4-3.5%22 fill=%22none%22 stroke=%22%230e0e0c%22 stroke-width=%221.6%22/></svg>')] bg-[length:14px] bg-[right_1rem_center] bg-no-repeat pr-10`} aria-invalid={bad.includes("storeType")}>
+        <select name="storeType" defaultValue="" className={`${field("storeType")} appearance-none bg-[url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 12 12%22><path d=%22M2 4.5l4 3.5 4-3.5%22 fill=%22none%22 stroke=%22%230e0e0c%22 stroke-width=%221.6%22/></svg>')] dark:bg-[url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 12 12%22><path d=%22M2 4.5l4 3.5 4-3.5%22 fill=%22none%22 stroke=%22%23eef0ea%22 stroke-width=%221.6%22/></svg>')] bg-[length:14px] bg-[right_1rem_center] bg-no-repeat pr-10`} aria-invalid={bad.includes("storeType")}>
           <option value="" disabled>Choose one</option>
           {storeTypes.map((s) => <option key={s} value={s}>{s}</option>)}
         </select>
@@ -156,7 +156,7 @@ export function ContactForm() {
       </div>
 
       {error ? (
-        <p id="form-error" ref={errRef} tabIndex={-1} role="alert" className="rounded-xl bg-red/10 px-4 py-3 text-[0.95rem] text-red-deep">
+        <p id="form-error" ref={errRef} tabIndex={-1} role="alert" className="rounded-xl bg-red/10 px-4 py-3 text-[0.95rem] text-alert-deep">
           {error}{" "}
           <a href={whatsappLink(waText)} target="_blank" rel="noopener" className="font-semibold underline underline-offset-4">Send on WhatsApp</a>
         </p>
@@ -170,7 +170,7 @@ export function ContactForm() {
         <span className="roll grid overflow-hidden">
           <span data-pos={sending ? "leaving" : "current"}>Book my free demo</span>
           <span data-pos={sending ? "current" : "waiting"} className="inline-flex items-center gap-2">
-            <span className="spin h-3.5 w-3.5 rounded-full border-2 border-star border-r-transparent" aria-hidden="true" /> Sending your request
+            <span className="spin h-3.5 w-3.5 rounded-full border-2 border-ink border-r-transparent" aria-hidden="true" /> Sending your request
           </span>
         </span>
       </button>

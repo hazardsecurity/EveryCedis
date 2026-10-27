@@ -2,10 +2,10 @@ import type { ReactNode } from "react";
 
 type Tone = "white" | "chalk" | "canopy" | "star";
 const tones: Record<Tone, string> = {
-  white: "bg-white text-star on-light",
-  chalk: "bg-chalk text-star on-light",
+  white: "bg-paper text-ink on-light",
+  chalk: "bg-chalk text-ink on-light",
   canopy: "bg-canopy text-white",
-  star: "bg-star text-white",
+  star: "bg-star text-white dark:border-y dark:border-white/10",
 };
 
 export function Section({
@@ -47,7 +47,7 @@ export function Heading({
   return (
     <div className={`max-w-3xl ${className}`}>
       {kicker ? (
-        <p className={`mb-4 text-sm font-semibold ${dark ? "text-gold" : "text-forest"}`}>{kicker}</p>
+        <p className={`mb-4 text-sm font-semibold ${dark ? "text-gold" : "text-leaf"}`}>{kicker}</p>
       ) : null}
       <h2 id={id} className="font-display text-[2.1rem] font-bold leading-[1.05] tracking-[-0.025em] text-balance sm:text-5xl">
         {title}
