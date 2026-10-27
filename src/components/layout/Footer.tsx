@@ -33,7 +33,9 @@ export function Footer() {
                 <Link href={n.href} className="text-white/85 hover:text-gold">{n.label}</Link>
               </li>
             ))}
-            <li><Link href="/brand" className="text-white/85 hover:text-gold">Brand guidelines</Link></li>
+            {process.env.NODE_ENV !== "production" && (
+              <li><Link href="/brand" className="text-white/85 hover:text-gold">Brand guidelines</Link></li>
+            )}
           </ul>
         </div>
         <div>

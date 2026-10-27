@@ -1,15 +1,19 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { Logo, Mark, Star } from "@/components/brand/Logo";
 import { Weave } from "@/components/brand/Weave";
 import { Reveal } from "@/components/ui/Reveal";
 import { BrandMotionDemo } from "@/components/interactive/BrandMotionDemo";
 import { PrinterArt, ScannerArt, TerminalArt, UpsArt } from "@/components/sections/Illustrations";
 
-export const metadata: Metadata = {
-  title: "Brand guidelines",
-  description: "The Every₵edi brand: the ₵ mark, the Ghana flag palette, typography, the Ledger Weave, the Black Star seal, motion and voice.",
-  alternates: { canonical: "/brand" },
-};
+export const metadata: Metadata =
+  process.env.NODE_ENV === "production"
+    ? { robots: { index: false, follow: false } }
+    : {
+      title: "Brand guidelines",
+      description: "The Every₵edi brand: the ₵ mark, the Ghana flag palette, typography, the Ledger Weave, the Black Star seal, motion and voice.",
+      robots: { index: false, follow: false },
+      };
 
 const colours = [
   { name: "Liberty Red", hex: "#CE1126", rgb: "206 17 38", role: "Urgency and loss: shortages, sold out, errors. Small doses.", fg: "text-white", bg: "bg-red", share: "3%" },
@@ -73,7 +77,9 @@ function H({ id, n, title, lead }: { id: string; n: string; title: string; lead?
   );
 }
 
+/* Internal reference: viewable on `npm run dev` only; the live site returns 404. */
 export default function BrandPage() {
+  if (process.env.NODE_ENV === "production") notFound();
   return (
     <>
       {/* ---------- Cover ---------- */}
